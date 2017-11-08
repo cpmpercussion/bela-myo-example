@@ -11,6 +11,7 @@ extern "C" {
 #include <Scope.h>
 #include <string>
 #include <sstream>
+
 // includes for myo
 #define MYO_ADDRESS "c8:2f:84:e5:88:af"
 #include "myolinux/myoclient.h"
@@ -476,6 +477,7 @@ bool setup(BelaContext *context, void *userData)
     client.setMode(myolinux::myo::EmgMode::SendEmg, myolinux::myo::ImuMode::SendData, myolinux::myo::ClassifierMode::Disabled);
     client.onEmg([](myolinux::myo::EmgSample sample)
     {
+    	// Send EMG data.
     	libpd_start_message(8);
         for (std::size_t i = 0; i < 8; i++) {
         	libpd_add_float(sample[i] / 127.0); // EMG is an 8 bit int (-127, 127)
@@ -490,33 +492,36 @@ bool setup(BelaContext *context, void *userData)
     	ori_y = ori[2] / 16384.0;
     	ori_z = ori[3] / 16384.0;
     	toEulerAngle(ori_w,ori_x,ori_y,ori_z,roll,pitch,yaw);
+    	// Send Orientation
         libpd_start_message(4); // Message for orientation quaternion
         libpd_add_float(ori_w);
         libpd_add_float(ori_x);
         libpd_add_float(ori_y);
         libpd_add_float(ori_z);
 		libpd_finish_list("ori"); // send to "ori" inlet
-        // printf("Accel: ");
+		// Send Acceleration
 		libpd_start_message(3); // Message for acceleration triple
         libpd_add_float(acc[0] / 2048.0);
         libpd_add_float(acc[1] / 2048.0);
         libpd_add_float(acc[2] / 2048.0);
         libpd_finish_list("acc"); // send to inlet "acc"
-        // printf("Gyro: ");
+        // Send Gyro
         libpd_start_message(3); // Message for gyroscope triple
         libpd_add_float(gyr[0] / 16.0);
         libpd_add_float(gyr[1] / 16.0);
         libpd_add_float(gyr[2] / 16.0);
         libpd_finish_list("gyr"); // send to inlet "gyr"
-      	// TODO: transform orientation into yaw pitch roll and send that too.
+        // Send Euler Angles
       	libpd_start_message(3);
-      	libpd_add_float(roll);
-      	libpd_add_float(pitch);
-      	libpd_add_float(yaw);
+      	libpd_add_float(roll / M_PI); // roll sent in [-1,1] (not [-pi,pi])
+      	libpd_add_float(pitch / M_PI); // pitch sent in [-1,1] (not [-pi,pi])
+      	libpd_add_float(yaw / M_PI); // yaw sent in sent in [-1,1] (not [-pi,pi])
       	libpd_finish_list("euler");
     });
     myoSensorTask = Bela_createAuxiliaryTask (&process_myo_sensors, 80, "myo-sensing");
-    // End Myo Setup
+    /*
+     * End Myo Setup
+     */
 	return true;
 }
 
