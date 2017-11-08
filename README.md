@@ -12,8 +12,8 @@ To use this project, you have to install an extra library on your Bela (instruct
 1. Install [MyoLinux](https://github.com/brokenpylons/MyoLinux) on your Bela. This involves copying over the source code and building according to the instructions given on the [MyoLinux](https://github.com/brokenpylons/MyoLinux) readme. At this point you can test the connectivity using the `myolinux_example` program that is built when installing MyoLinux.
 2. Copy the MyoLinux shared object file to where it will be seen by the build environment: `cp /usr/local/lib/libmyolinux.so /usr/lib/`
 3. Move the project files from this repo to your bela.
-4. To connect to a Myo you have to specify the address in line 16 of `render.cpp`. You can find this address when running `myolinux_example` in step 1.
-5. Alternatively, you can replace `client.connect(MYO_ADDRESS);` with `client.connect());` from line 465 and the Bela will connect to the first Myo it sees. In a multi-myo situation this could be very bad (or... very good? depends on the goals of your project).
+4. To connect to a specific Myo you have to specify the address in line 16 of `render.cpp`, e.g., `#define MYO_ADDRESS "c8:2f:84:e5:88:af"`. You can find this address when running `myolinux_example` in step 1.
+5. Alternatively, you can replace `client.connect(MYO_ADDRESS);` with `client.connect());` from line 465 and the Bela will connect to the first Myo it sees. In a multi-myo situation this could be very bad (or... very good?).
 6. Make some cool sounds in the `_main.pd` file. I've put in an example that uses the EMGs to control the volume of eight oscillators while the pitch (angle) of your arm changes the base pitch (frequency). Fun!
 
 ## Data you get:
