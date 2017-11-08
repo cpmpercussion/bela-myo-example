@@ -1,6 +1,6 @@
 # Using the Myo Armband with Bela
 
-Here's a little [Bela](https://bela.io) project that uses the [Myo](https://www.myo.com) armband as a control interface. The Myo armband contains 8 EMG (muscle) sensors, and an IMU (movement) sensor.
+Here's a little [Bela](http://bela.io) project that uses the [Myo](https://www.myo.com) armband as a control interface. The Myo armband contains 8 EMG (muscle) sensors, and an IMU (movement) sensor. [Here's a demo](https://youtu.be/8GA1HF-xr4c).
 
 This idea for this project is to connect the Bela to one particular Myo, and pass data from these sensors to a Pd patch so that we can have fun using them to drive synthesis processes.
 
