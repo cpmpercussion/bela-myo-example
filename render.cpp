@@ -517,6 +517,8 @@ bool setup(BelaContext *context, void *userData)
       	libpd_add_float(pitch / M_PI); // pitch sent in [-1,1] (not [-pi,pi])
       	libpd_add_float(yaw / M_PI); // yaw sent in sent in [-1,1] (not [-pi,pi])
       	libpd_finish_list("euler");
+      	// Send magnitude of acceleration
+      	libpd_float("accmag", sqrt(acc[0]*acc[0] + acc[1]*acc[1] + acc[2]*acc[2]) / 2048.);
     });
     myoSensorTask = Bela_createAuxiliaryTask (&process_myo_sensors, 80, "myo-sensing");
     /*
