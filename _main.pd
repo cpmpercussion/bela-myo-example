@@ -1,4 +1,4 @@
-#N canvas 401 189 1638 1009 10;
+#N canvas 69 22 1638 950 10;
 #X obj 526 361 r emg;
 #X obj 196 464 abs;
 #X obj 178 509 *~;
@@ -149,7 +149,7 @@
 #X obj 543 171 *~ 100;
 #X obj 581 142 lop~ 3;
 #X obj 580 117 * -1;
-#N canvas 839 352 633 376 standstill 1;
+#N canvas 188 153 633 376 standstill 0;
 #X obj 124 350 outlet~;
 #X obj 118 13 inlet;
 #X obj 139 242 line~;
@@ -163,8 +163,8 @@
 #X obj 208 105 change;
 #X obj 293 134 print standstill;
 #X obj 317 184 print moved;
-#X msg 195 196 0 80;
-#X obj 149 79 < 0.1;
+#X msg 195 196 0 50;
+#X obj 149 79 < 0.08;
 #X connect 1 0 8 0;
 #X connect 2 0 5 0;
 #X connect 2 0 5 1;
@@ -327,7 +327,7 @@
 #X floatatom 1090 310 5 0 0 0 - - -, f 5;
 #X obj 599 381 dbtorms;
 #X obj 597 198 vsl 15 128 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12700 1;
+-1 -1 0 1;
 #X floatatom 599 403 9 0 0 0 - - -, f 9;
 #X floatatom 621 308 5 0 0 0 - - -, f 5;
 #X obj 598 357 + 100;
@@ -401,7 +401,6 @@
 #X connect 59 0 51 0;
 #X connect 60 0 50 0;
 #X restore 578 687 pd distortion;
-#X obj 587 712 *~ 0.3;
 #N canvas 1184 767 939 298 testemg 0;
 #X obj 122 102 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -410,15 +409,15 @@
 #X obj 74 212 s emg;
 #X obj 248 181 s accmag;
 #X obj 419 23 vsl 15 128 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 12700 1;
+-1 -1 0 1;
 #X floatatom 418 160 5 0 0 0 - - -, f 5;
 #X obj 421 208 pack f f f;
 #X obj 421 233 s euler;
 #X obj 466 22 vsl 15 128 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 5900 1;
+-1 -1 0 1;
 #X floatatom 465 161 5 0 0 0 - - -, f 5;
 #X obj 513 23 vsl 15 128 -1 1 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 1200 1;
+-1 -1 0 1;
 #X floatatom 512 160 5 0 0 0 - - -, f 5;
 #X obj 368 167 t b;
 #X connect 0 0 2 0;
@@ -444,6 +443,7 @@
 #X connect 13 0 7 0;
 #X restore 1140 81 pd testemg;
 #X obj 1245 585 *~ 0.7;
+#X obj 587 712 *~ 1;
 #X connect 0 0 17 0;
 #X connect 1 0 20 0;
 #X connect 2 0 44 0;
@@ -498,7 +498,7 @@
 #X connect 37 0 34 0;
 #X connect 38 0 37 0;
 #X connect 39 0 38 0;
-#X connect 40 0 68 0;
+#X connect 40 0 67 0;
 #X connect 41 0 42 0;
 #X connect 42 0 40 0;
 #X connect 42 0 45 0;
@@ -531,8 +531,8 @@
 #X connect 62 0 16 0;
 #X connect 63 0 18 0;
 #X connect 64 0 18 1;
-#X connect 65 0 66 0;
-#X connect 66 0 63 0;
-#X connect 66 0 64 0;
-#X connect 68 0 43 1;
-#X connect 68 0 44 1;
+#X connect 65 0 68 0;
+#X connect 67 0 43 1;
+#X connect 67 0 44 1;
+#X connect 68 0 63 0;
+#X connect 68 0 64 0;
