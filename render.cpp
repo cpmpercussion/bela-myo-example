@@ -13,7 +13,12 @@ extern "C" {
 #include <sstream>
 
 // includes for myo
-#define MYO_ADDRESS "c8:2f:84:e5:88:af"
+// #define MYO_ADDRESS  "cd:2a:24:45:66:3f" // SVERM 1
+// #define MYO_ADDRESS  "fb:61:d1:12:3e:77" // SVERM 2
+#define MYO_ADDRESS  "c8:2f:84:e5:88:af" // SVERM 3
+// #define MYO_ADDRESS  "f4:0f:df:81:1e:1b" // SVERM 4
+
+
 #include "myolinux/myoclient.h"
 #include "myolinux/serial.h"
 #include <cinttypes>
@@ -518,7 +523,8 @@ bool setup(BelaContext *context, void *userData)
       	libpd_add_float(yaw / M_PI); // yaw sent in sent in [-1,1] (not [-pi,pi])
       	libpd_finish_list("euler");
       	// Send magnitude of acceleration
-      	libpd_float("accmag", sqrt(acc[0]*acc[0] + acc[1]*acc[1] + acc[2]*acc[2]) / 2048.);
+      	libpd_float("accmag", sqrt(acc[0]*acc[0] + acc[1]*acc[1] + acc[2]*acc[2]) / 2048.); // magnitude of accelerometer vector
+      	libpd_float("gyrmag", sqrt(gyr[0]*gyr[0] + gyr[1]*gyr[1] + gyr[2]*gyr[2]) / 2048.); // magnitude of gyroscope vector
     });
     myoSensorTask = Bela_createAuxiliaryTask (&process_myo_sensors, 80, "myo-sensing");
     /*
