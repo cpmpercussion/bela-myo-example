@@ -524,7 +524,7 @@ bool setup(BelaContext *context, void *userData)
       	libpd_finish_list("euler");
       	// Send magnitude of acceleration
       	libpd_float("accmag", sqrt(acc[0]*acc[0] + acc[1]*acc[1] + acc[2]*acc[2]) / 2048.); // magnitude of accelerometer vector
-      	libpd_float("gyrmag", sqrt(gyr[0]*gyr[0] + gyr[1]*gyr[1] + gyr[2]*gyr[2]) / 2048.); // magnitude of gyroscope vector
+      	libpd_float("gyrmag", sqrt(gyr[0]*gyr[0] + gyr[1]*gyr[1] + gyr[2]*gyr[2]) / 16.); // magnitude of gyroscope vector
     });
     myoSensorTask = Bela_createAuxiliaryTask (&process_myo_sensors, 80, "myo-sensing");
     /*

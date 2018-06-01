@@ -38,3 +38,7 @@ I think the Myo can do some on-board gesture classification, but I don't think t
 ## PS:
 
 Try typing with my example Pd patch running. Fun times with EMGs!
+
+## Stillness Under Tension
+
+The `_main.pd` file is for our work at NIME2018: "Stillness Under Tension" - try it out!
