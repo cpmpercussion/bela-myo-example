@@ -17,6 +17,8 @@ extern "C" {
 // #define MYO_ADDRESS  "fb:61:d1:12:3e:77" // SVERM 2
 #define MYO_ADDRESS  "c8:2f:84:e5:88:af" // SVERM 3
 // #define MYO_ADDRESS  "f4:0f:df:81:1e:1b" // SVERM 4
+// #define MYO_ADDRESS  "c9:50:e1:71:71:81" // SVERM 5
+// #define MYO_ADDRESS  "dd:f0:45:ba:5a:ad" // SVERM 6
 
 
 #include "myolinux/myoclient.h"
